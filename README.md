@@ -27,4 +27,4 @@ The dataset used in this project is available on Kaggle: [Chest X-Ray Images (Pn
 ## Achievement
 The developed system successfully distinguished between bacterial and viral pneumonia on chest X-ray images. It serves as a prototype for potential application in the field of biomedical imaging, providing a valuable tool for diagnosing pneumonia accurately and efficiently.
 
-**Credit:** Kermany, Daniel; Zhang, Kang; Goldbaum, Michael (2018), "Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification", Mendeley Data, V2, doi: 10.17632/rscbjbr9sj.2
+

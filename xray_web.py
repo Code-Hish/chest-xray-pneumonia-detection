@@ -48,7 +48,7 @@ else:
     image = Image.open(file)
     st.image(image, width='stretch')
     predictions = import_and_predict(image, model)
-    score = tf.nn.softmax(predictions[0])
+    score = tf.nn.softmax(predictions[0]) 
     
     # Calculate prediction and confidence
     class_index = np.argmax(score)
@@ -62,21 +62,9 @@ else:
     with col2:
         st.metric("Confidence", f"{confidence:.2f}%")
     
-    # Detailed explanation
-    with st.expander("📖 How the Model Works", expanded=False):
-        st.write("""
-        ### Model Output Process:
-        
-        1. **Raw Predictions (Logits)**: The neural network outputs raw numbers that can be negative or very large
-        2. **Softmax Function**: Converts raw values to probabilities (0-1) that add up to 1.0
-        3. **Classification**: Picks the class with the highest probability
-        
-        **Why they're different**: Raw predictions are unbounded values, while softmax converts them to normalized probabilities.
-        """)
-    
     # Detailed scores
     with st.expander("🔬 Detailed Model Output", expanded=True):
-        st.write("### Step 1: Raw Predictions (Model Output)")
+        st.write("### Raw Predictions (Model Output)")
         st.info(f"""
         **Raw logits from neural network:**
         - NORMAL: {predictions[0][0]:.6f}
@@ -85,7 +73,7 @@ else:
         These are unbounded values - they can be any real number.
         """)
         
-        st.write("### Step 2: Softmax Scores (Probabilities)")
+        st.write("### Softmax Scores (Probabilities)")
         st.info(f"""
         **Converted to probabilities (always sum to 1.0):**
         - NORMAL: {score[0]:.6f} ({score[0]*100:.2f}%)
@@ -107,8 +95,8 @@ else:
         with col2:
             st.metric("🟠 PNEUMONIA (Softmax)", f"{score[1]:.4f}")
         
-        # Show which one is selected
-        st.success(f"✅ **Final Decision**: {class_names[class_index]} with {confidence:.2f}% confidence")
+    # Show which one is selected
+    st.success(f"✅ **Final Decision**: {class_names[class_index]} with {confidence:.2f}% confidence")
     
     print(
         "This image most likely belongs to {} with a {:.2f} percent confidence."
